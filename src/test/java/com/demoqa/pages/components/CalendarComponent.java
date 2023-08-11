@@ -2,6 +2,7 @@ package com.demoqa.pages.components;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -19,7 +20,7 @@ public class CalendarComponent {
 
     public void setDate(Date date) {
         SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy"),
-                monthFormat = new SimpleDateFormat("MMMM"),
+                monthFormat = new SimpleDateFormat("MMMM", Locale.ENGLISH),
                 dayFormat = new SimpleDateFormat("dd");
         String year = yearFormat.format(date),
                 month = monthFormat.format(date),
