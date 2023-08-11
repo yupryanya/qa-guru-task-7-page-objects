@@ -1,14 +1,12 @@
 package com.demoqa.tests;
 
-import com.demoqa.pages.TextBoxPage;
+import com.demoqa.pages.TextBoxFormPage;
 import org.junit.jupiter.api.Test;
 
-public class TextBoxTests extends TestBase {
+public class TextBoxFormTests extends TestBase {
     @Test
-    void fillFormTest() {
-
-        TextBoxPage textBoxPage = new TextBoxPage();
-
+    void fillAllFieldsTest() {
+        TextBoxFormPage textBoxPage = new TextBoxFormPage();
         String userName = "John Doe";
         String userEmail = "johndoe@testdomain.com";
         String currentAddress = "Sri Kumaran Children's Academy, 28/4, Kanakapura Road, Vasanthapura, Bengaluru";
@@ -23,7 +21,7 @@ public class TextBoxTests extends TestBase {
 
         textBoxPage.checkUserName(userName)
                     .checkUserEmail(userEmail)
-                    .setCurrentAddress(currentAddress)
+                    .checkCurrentAddress(currentAddress)
                     .checkPermanentAddress(permanentAddress);
     }
 }

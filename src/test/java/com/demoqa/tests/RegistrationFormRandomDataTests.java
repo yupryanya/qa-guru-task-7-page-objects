@@ -1,21 +1,18 @@
 package com.demoqa.tests;
 
-import com.demoqa.pages.RegistrationPage;
+import com.demoqa.pages.RegistrationFormPage;
 import com.demoqa.pages.components.ProfilePreviewModal;
-import com.demoqa.utils.RegistrationPageDataGenerator;
+import com.demoqa.utils.RegistrationFormDataGenerator;
 import org.junit.jupiter.api.Test;
 import java.util.Date;
 import java.util.List;
 
-public class StudentRegistrationFormTestsRandom extends TestBase {
-
+public class RegistrationFormRandomDataTests extends TestBase {
     @Test
-    void fillFormTest() {
-
-        RegistrationPage registrationPage = new RegistrationPage();
+    void fillAllFieldsTest() {
+        RegistrationFormPage registrationFormPage = new RegistrationFormPage();
         ProfilePreviewModal profilePreviewModal = new ProfilePreviewModal();
-
-        RegistrationPageDataGenerator randomData = new RegistrationPageDataGenerator();
+        RegistrationFormDataGenerator randomData = new RegistrationFormDataGenerator();
 
         Date birthDate = randomData.generateBirthDate();
         List<String> hobbies = randomData.generateHobby(2);
@@ -30,7 +27,7 @@ public class StudentRegistrationFormTestsRandom extends TestBase {
                 stateName = randomData.generateState(),
                 cityName = randomData.generateCity(stateName);
 
-        registrationPage.openPage()
+        registrationFormPage.openPage()
                 .removeBanners()
                 .setFirstName(firstName)
                 .setLastName(lastName)

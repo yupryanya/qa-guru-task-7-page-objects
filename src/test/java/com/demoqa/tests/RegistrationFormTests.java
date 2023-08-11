@@ -1,15 +1,13 @@
 package com.demoqa.tests;
 
-import com.demoqa.pages.RegistrationPage;
+import com.demoqa.pages.RegistrationFormPage;
 import com.demoqa.pages.components.ProfilePreviewModal;
 import org.junit.jupiter.api.Test;
 
-public class StudentRegistrationFormTests extends TestBase {
-
+public class RegistrationFormTests extends TestBase {
     @Test
-    void fillFormTest() {
-
-        RegistrationPage registrationPage = new RegistrationPage();
+    void fillAllFieldsTest() {
+        RegistrationFormPage registrationFormPage = new RegistrationFormPage();
         ProfilePreviewModal profilePreviewModal = new ProfilePreviewModal();
 
         String firstName = "John",
@@ -29,7 +27,7 @@ public class StudentRegistrationFormTests extends TestBase {
                 stateName = "Uttar Pradesh",
                 cityName = "Agra";
 
-        registrationPage.openPage()
+        registrationFormPage.openPage()
                 .removeBanners()
                 .setFirstName(firstName)
                 .setLastName(lastName)

@@ -4,8 +4,7 @@ import com.github.javafaker.Faker;
 
 import java.util.*;
 
-public class RegistrationPageDataGenerator {
-
+public class RegistrationFormDataGenerator {
     private final List<String> HOBBY_LIST = new ArrayList<>(Arrays.asList("Music", "Sports", "Reading"));
     private final List<String> GENDER_LIST = new ArrayList<>(Arrays.asList("Male", "Female", "Other"));
     private final List<String> SUBJECT_LIST = new ArrayList<>(Arrays.asList("Hindi", "English", "Maths",

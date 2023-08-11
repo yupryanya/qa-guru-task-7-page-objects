@@ -8,11 +8,9 @@ import java.util.List;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.Selenide.executeJavaScript;
 
-public class RegistrationPage {
-
-    CalendarComponent calendar = new CalendarComponent();
+public class RegistrationFormPage {
+    private CalendarComponent calendar = new CalendarComponent();
     private SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             emailInput = $("#userEmail"),
@@ -25,50 +23,50 @@ public class RegistrationPage {
             cityInput = $("#react-select-4-input"),
             submitButton = $("#submit");
 
-    public RegistrationPage removeBanners() {
+    public RegistrationFormPage removeBanners() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
         return this;
     }
 
-    public RegistrationPage openPage() {
+    public RegistrationFormPage openPage() {
         open("/automation-practice-form");
         return this;
     }
 
-    public RegistrationPage setFirstName(String firstName) {
+    public RegistrationFormPage setFirstName(String firstName) {
         firstNameInput.setValue(firstName);
         return this;
     }
 
-    public RegistrationPage setLastName(String value) {
+    public RegistrationFormPage setLastName(String value) {
         lastNameInput.setValue(value);
         return this;
     }
 
-    public RegistrationPage setBirthDate(String year, String month, String day) {
+    public RegistrationFormPage setBirthDate(String year, String month, String day) {
         calendarInput.click();
         calendar.setDate(year, month, day);
         return this;
     }
 
-    public RegistrationPage setBirthDate(Date birthDate) {
+    public RegistrationFormPage setBirthDate(Date birthDate) {
         calendarInput.click();
         calendar.setDate(birthDate);
         return this;
     }
 
-    public RegistrationPage setUserEmail(String value) {
+    public RegistrationFormPage setUserEmail(String value) {
         emailInput.setValue(value);
         return this;
     }
 
-    public RegistrationPage setGender(String value) {
+    public RegistrationFormPage setGender(String value) {
         $(byText(value)).click();
         return this;
     }
 
-    public RegistrationPage setUserNumber(String value) {
+    public RegistrationFormPage setUserNumber(String value) {
         userNumberInput.setValue(value);
         return this;
     }
@@ -78,43 +76,43 @@ public class RegistrationPage {
         subjectsInput.pressEnter();
     }
 
-    public RegistrationPage setSubject(String value) {
+    public RegistrationFormPage setSubject(String value) {
         setSubjects(value);
         return this;
     }
 
-    public RegistrationPage setSubject(List<String> values) {
+    public RegistrationFormPage setSubject(List<String> values) {
         values.forEach(this::setSubjects);
         return this;
     }
 
-    public RegistrationPage setHobby(String value) {
+    public RegistrationFormPage setHobby(String value) {
         $(byText(value)).click();
         return this;
     }
 
-    public RegistrationPage setHobby(List<String> values) {
+    public RegistrationFormPage setHobby(List<String> values) {
         values.forEach(value -> $(byText(value)).click());
         return this;
     }
 
-    public RegistrationPage uploadPicture(String value) {
+    public RegistrationFormPage uploadPicture(String value) {
         uploadPicture.uploadFromClasspath(value);
         return this;
     }
 
-    public RegistrationPage setCurrentAddress(String value) {
+    public RegistrationFormPage setCurrentAddress(String value) {
         currentAddressInput.setValue(value);
         return this;
     }
 
-    public RegistrationPage setState(String value) {
+    public RegistrationFormPage setState(String value) {
         stateInput.setValue(value);
         stateInput.pressEnter();
         return this;
     }
 
-    public RegistrationPage setCity(String value) {
+    public RegistrationFormPage setCity(String value) {
         cityInput.setValue(value);
         cityInput.pressEnter();
         return this;
