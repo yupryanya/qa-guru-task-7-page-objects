@@ -30,6 +30,7 @@ public class StudentRegistrationFormTests extends TestBase {
                 cityName = "Agra";
 
         registrationPage.openPage()
+                .removeBanners()
                 .setFirstName(firstName)
                 .setLastName(lastName)
                 .setUserEmail(userEmail)

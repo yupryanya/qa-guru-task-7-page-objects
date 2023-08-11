@@ -14,22 +14,17 @@ public class CalendarComponent {
         $(daySelector).click();
     }
 
-    public CalendarComponent setDate(String year, String month, String day) {
+    public void setDate(String year, String month, String day) {
         setCalendarDate(year, month, day);
-        return this;
     }
 
-    public CalendarComponent setDate(Date date) {
-
+    public void setDate(Date date) {
         SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy"),
                 monthFormat = new SimpleDateFormat("MMMM"),
                 dayFormat = new SimpleDateFormat("dd");
-
         String year = yearFormat.format(date),
                 month = monthFormat.format(date),
                 day = dayFormat.format(date);
-
         setCalendarDate(year, month, day);
-        return this;
     }
 }
