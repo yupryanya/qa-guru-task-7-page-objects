@@ -2,6 +2,10 @@ package com.demoqa.pages;
 
 import com.codeborne.selenide.SelenideElement;
 import com.demoqa.pages.components.CalendarComponent;
+
+import java.util.Date;
+import java.util.List;
+
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
@@ -13,21 +17,22 @@ public class RegistrationPage {
             lastNameInput = $("#lastName"),
             emailInput = $("#userEmail"),
             userNumberInput = $("#userNumber"),
+            calendarInput = $("#dateOfBirthInput"),
             subjectsInput = $("#subjectsInput"),
             uploadPicture = $("#uploadPicture"),
             currentAddressInput = $("#currentAddress"),
-            currentAddressStateInput = $("#react-select-3-input"),
-            currentAddressCityInput = $("#react-select-4-input"),
+            stateInput = $("#react-select-3-input"),
+            cityInput = $("#react-select-4-input"),
             submitButton = $("#submit");
 
-    private void removeBanners() {
+    public RegistrationPage removeBanners() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
+        return this;
     }
 
     public RegistrationPage openPage() {
         open("/automation-practice-form");
-        removeBanners();
         return this;
     }
 
@@ -42,8 +47,14 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setBirthDate(String year, String month, String day) {
-        $("#dateOfBirthInput").click();
+        calendarInput.click();
         calendar.setDate(year, month, day);
+        return this;
+    }
+
+    public RegistrationPage setBirthDate(Date birthDate) {
+        calendarInput.click();
+        calendar.setDate(birthDate);
         return this;
     }
 
@@ -62,15 +73,28 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setSubject(String value) {
+    private void setSubjects(String value) {
         subjectsInput.setValue(value);
-        subjectsInput.pressEnter();                  //Клавиатурой
-        // $("#react-select-2-option-0").click();    //Мышью
+        subjectsInput.pressEnter();
+    }
+
+    public RegistrationPage setSubject(String value) {
+        setSubjects(value);
+        return this;
+    }
+
+    public RegistrationPage setSubject(List<String> values) {
+        values.forEach(this::setSubjects);
         return this;
     }
 
     public RegistrationPage setHobby(String value) {
         $(byText(value)).click();
+        return this;
+    }
+
+    public RegistrationPage setHobby(List<String> values) {
+        values.forEach(value -> $(byText(value)).click());
         return this;
     }
 
@@ -84,15 +108,15 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage setCurrentAddressState(String value) {
-        currentAddressStateInput.setValue(value);
-        currentAddressStateInput.pressEnter();
+    public RegistrationPage setState(String value) {
+        stateInput.setValue(value);
+        stateInput.pressEnter();
         return this;
     }
 
-    public RegistrationPage setCurrentAddressCity(String value) {
-        currentAddressCityInput.setValue(value);
-        currentAddressCityInput.pressEnter();
+    public RegistrationPage setCity(String value) {
+        cityInput.setValue(value);
+        cityInput.pressEnter();
         return this;
     }
 
