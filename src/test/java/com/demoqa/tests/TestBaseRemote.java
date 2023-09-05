@@ -18,8 +18,9 @@ import static org.asynchttpclient.util.HttpConstants.Methods.OPTIONS;
 public class TestBaseRemote {
     @BeforeAll
     static void init() {
-        Configuration.baseUrl = System.getProperty("baseUrl");
-        browserSize = "1920x1080";
+        baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
+        browser = System.getProperty("browser", "chrome");
+        browserSize = System.getProperty("browserSize", "1920x1080");
         pageLoadStrategy = "eager";
         remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
