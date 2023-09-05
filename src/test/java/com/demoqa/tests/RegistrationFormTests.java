@@ -4,6 +4,7 @@ import com.demoqa.pages.RegistrationFormPage;
 import com.demoqa.pages.components.ProfilePreviewModal;
 import com.demoqa.utils.RegistrationFormDataGenerator;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.util.Date;
@@ -12,6 +13,7 @@ import java.util.List;
 import static io.qameta.allure.Allure.step;
 
 @DisplayName("Registration form tests")
+@Tag("remote")
 public class RegistrationFormTests extends TestBaseRemote {
     @Test
     @DisplayName("Successful registration with all fields validly filled")
