@@ -41,7 +41,7 @@ public class TestBaseRemote {
     }
 
     @AfterEach
-    void addArtifactsToReport() {
+    void addArtefactsToReport() {
         Attach.screenshotAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
