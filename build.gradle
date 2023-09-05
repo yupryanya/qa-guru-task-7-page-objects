@@ -54,3 +54,9 @@ task regression(type: Test) {
         includeTags('regression')
     }
 }
+
+task regression(type: Test) {
+    useJUnitPlatform{
+        includeTags('smoke')
+    }
+}
