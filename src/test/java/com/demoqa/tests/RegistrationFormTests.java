@@ -22,7 +22,6 @@ public class RegistrationFormTests extends TestBaseRemote {
     void successfulRegistrationWithValidFields() {
         RegistrationFormPage registrationFormPage = new RegistrationFormPage();
         ProfilePreviewModal profilePreviewModal = new ProfilePreviewModal();
-
         String firstName = "John",
                 lastName = "Doe",
                 birthdayDay = "01",
