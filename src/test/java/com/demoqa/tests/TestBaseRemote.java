@@ -16,15 +16,22 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class TestBaseRemote {
     @BeforeAll
     static void init() {
-        Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
-        Configuration.browser = System.getProperty("browser", "chrome");
+        String browser = System.getProperty("browser", "chrome 100.0");
+        String[] browserInfo = browser.split(" ");
+        String browserName = browserInfo[0];
+        String browserVersion = browserInfo[1];
+
+        Configuration.browser = browserName;
+        Configuration.browserVersion = browserVersion;
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
-        Configuration.browserVersion = System.getProperty("browserVersion", "100.0");
+        Configuration.baseUrl = System.getProperty("baseUrl", "https://demoqa.com");
         Configuration.remote = "https://user1:1234@" +
                                 System.getProperty("remoteWebDriver", "selenoid.autotests.cloud") +
                                 "/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
+        capabilities.setCapability("browserName", browserName);
+        capabilities.setCapability("browserVersion", browserVersion);
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
                 "enableVideo", true
