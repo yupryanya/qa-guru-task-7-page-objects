@@ -16,8 +16,8 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 public class TestBaseRemote {
     @BeforeAll
     static void init() {
-        String browser = System.getProperty("browser", "chrome 100.0");
-        String[] browserInfo = browser.split(" ");
+        String browser = System.getProperty("browser", "chrome_100.0");
+        String[] browserInfo = browser.split("_");
         String browserName = browserInfo[0];
         String browserVersion = browserInfo[1];
 
